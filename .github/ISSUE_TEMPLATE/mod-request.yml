@@ -1,108 +1,94 @@
-name: Mod request
-description: Suggest a new mod to be added or replaced in Fabulously Optimized
-labels: mod
+name: "🧩 Запрос нового мода / Mod request"
+description: "Предложить новый оптимизационный мод для добавления в сборку."
+labels: ["mod"]
 body:
-- type: markdown
-  attributes:
-    value: |
-      ## Mod name ⤴️
-      Before you request a mod, [please search](https://github.com/Fabulously-Optimized/fabulously-optimized/issues) if it has already been requested.
-      With this modpack, less is more. [Consider the principles as well.](https://fabulously-optimized.gitbook.io/modpack/readme/principles)
+  - type: markdown
+    attributes:
+      value: |
+        ## 🔗 Предложение новой модификации
+        Перед отправкой запроса, пожалуйста, [убедитесь через поиск](https://github.com), что этот мод ещё не предлагался кем-то другим ранее.
+        Помните главное техническое правило нашей сборки: чем меньше лишнего контента, тем лучше общая производительность игры.
 
-- type: input
-  attributes:
-    label: CurseForge link
-    description: If you know the link, please write it. If you don't know the link, do you know the dev's stance? (e.g. pending approval, planned, considering, not considering, etc.)
-    placeholder: https://www.curseforge.com/minecraft/mc-mods/...
-  validations:
-    required: false
-      
-- type: dropdown
-  attributes:
-    label: CurseForge Mod Distribution
-    multiple: false
-    options:
-      - Unknown
-      - Allowed
-      - Not allowed
-  validations:
-    required: true
-    
-- type: markdown
-  attributes:
-    value: |
-      1. Go to https://cflookup.com
-      2. Paste the mod link to "Project Id / Slug" and click `Search project`
-      3. Look at the `Mod Distribution` value and select it above
+  - type: input
+    id: mod_name
+    attributes:
+      label: "🏷️ Название мода / Mod name"
+      description: "Укажите официальное название модификации."
+      placeholder: "Например: Bobby, Sodium Extra, Lithium..."
+    validations:
+      required: true
 
-- type: input
-  attributes:
-    label: Modrinth link
-    description: If you know the link, please write it. If you don't know the link, do you know the dev's stance? (e.g. pending approval, planned, considering, not considering, etc.)
-    placeholder: https://modrinth.com/mod/...
-  validations:
-    required: false
+  - type: input
+    id: modrinth_link
+    attributes:
+      label: "🟢 Ссылка на Modrinth"
+      description: "Укажите прямую ссылку на страницу модификации на платформе Modrinth."
+      placeholder: "https://modrinth.com/mod/..."
+    validations:
+      required: true
 
-- type: input
-  attributes:
-    label: Source/other link
-    description: For example, a GitHub repository. Optional.
-    placeholder: https://...
-  validations:
-    required: false
+  - type: input
+    id: source_link
+    attributes:
+      label: "💻 Ссылка на исходный код (GitHub)"
+      description: "Укажите ссылку на официальный репозиторий проекта на GitHub (если есть)."
+      placeholder: "https://github.com/..."
+    validations:
+      required: false
 
-- type: input
-  attributes:
-    label: Mod file size
-    description: Can be found on CurseForge, Modrinth and GitHub releases and is used to determine mod size-purpose ratio. Write "unknown" only if there are no public versions yet. 
-    placeholder: 123.45 KB
-  validations:
-    required: true
+  - type: input
+    id: file_size
+    attributes:
+      label: "⚖️ Размер файла мода"
+      description: "Укажите примерный вес файла `.jar` с сайта Modrinth. Напишите 'неизвестно', если публичных версий еще нет."
+      placeholder: "Например: 150 KB, 2.5 MB"
+    validations:
+      required: true
 
-- type: dropdown
-  attributes:
-    label: License
-    description: Can be found on CurseForge, Modrinth and GitHub sidebar. If you only have a GitHub link and you can't find it from the sidebar, it is ARR.
-    options:
-      - All Rights Reserved / ARR
-      - (any other license)
-  validations:
-    required: true
+  - type: dropdown
+    id: license
+    attributes:
+      label: "📜 Лицензия мода"
+      description: "Какая лицензия указана в боковом меню страницы мода на Modrinth?"
+      options:
+        - "Открытая (MIT / Apache / GPL / BSD)"
+        - "Все права защищены (All Rights Reserved / ARR)"
+        - "Кастомная лицензия (Custom)"
+        - "Неизвестно"
+    validations:
+      required: true
 
-- type: textarea
-  attributes:
-    label: What it does
-    description: A short description of what the mod does. 
-  validations:
-    required: true
+  - type: textarea
+    id: what_it_does
+    attributes:
+      label: "❓ Что делает этот мод? / What it does"
+      description: "Дайте короткое описание основных функций этой модификации."
+      placeholder: "Например: Этот мод оптимизирует физику мобов и генерацию шумов мира..."
+    validations:
+      required: true
 
-- type: textarea
-  attributes:
-    label: Why should it be in the modpack
-    description: How can the mod benefit everyone while keeping the experience "vanilla-like"?
-  validations:
-    required: true
+  - type: textarea
+    id: why_in_pack
+    attributes:
+      label: "➕ Почему он ДОЛЖЕН быть в сборке?"
+      description: "Какую конкретную пользу он принесет игрокам, сохраняя при этом классический ванильный баланс игры?"
+      placeholder: "Например: Он полностью убирает микрофризы при открытии инвентаря на серверах..."
+    validations:
+      required: true
 
-- type: textarea
-  attributes:
-    label: Why shouldn't it be in the modpack
-    description: Don't forget to include any downsides of the mod, you know every mod has some.
-    placeholder: |
-      Examples: not available in CurseForge/Modrinth, still in beta, depends on something, has confusing settings, not very vanilla-like etc.
-  validations:
+  - type: textarea
+    id: why_not_in_pack
+    attributes:
+      label: "➖ Почему он НЕ ДОЛЖЕН быть в сборке? (Минусы)"
+      description: "У каждого мода есть недостатки. Опишите возможные минусы (баги, долгая загрузка, конфликты с Sodium/Lithium)."
+      placeholder: "Примеры: мод всё еще в бете, ломает кастомные шейдеры, имеет слишком запутанное меню настроек..."
+    validations:
       required: true
     
-- type: textarea
-  attributes:
-    label: Additional details
-    description: Anything else you want to add?
-  validations:
-    required: false
-
-- type: input
-  attributes:
-    label: Discord discussion link
-    description: Was this also discussed on the Fabulously Optimized Discord (optional)? If so, copy the link here.
-    placeholder: https://discord.com/channels/859124104644788234/...
-  validations:
-    required: false
+  - type: textarea
+    id: additional
+    attributes:
+      label: "📌 Дополнительные детали"
+      description: "Всё, что вы хотите добавить от себя (необязательно)."
+    validations:
+      required: false
