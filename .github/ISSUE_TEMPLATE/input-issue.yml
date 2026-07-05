@@ -1,0 +1,52 @@
+name: "🕹️ Проблема с управлением или геймпадом / Controls & Input Bug"
+description: "Если залипают клавиши мыши, не работает геймпад или конфликтуют кнопки"
+title: "[Input Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 🕹️ Отчет о багах управления в Ultimate Optimization
+  - type: dropdown
+    id: input_type
+    attributes:
+      label: "1. Что вы используете для игры? / Input Device"
+      options:
+        - "🖱️ Стандартный набор: Клавиатура и Мышь"
+        - "🎮 Геймпад / Контроллер (Xbox, PlayStation, DualSense, сторонний)"
+        - "📱 Сенсорное управление на телефоне (PojavLauncher)"
+    validations:
+      required: true
+  - type: dropdown
+    id: input_os
+    attributes:
+      label: "2. Операционная система / Operating System"
+      options:
+        - "🪟 Windows 10 / 11"
+        - "🐧 Linux"
+        - "🍏 MacOS"
+        - "📱 PojavLauncher"
+        - "❓ Другая ОС"
+    validations:
+      required: true
+  - type: textarea
+    id: input_description
+    attributes:
+      label: "3. Подробное описание бага управления / Description"
+      placeholder: "Клавиши движения залипают при беге / Геймпад не реагирует на нажатия кнопок в меню Sodium..."
+    validations:
+      required: true
+  - type: textarea
+    id: input_specs
+    attributes:
+      label: "4. Приблизительный тест FPS в момент бага и ваши комплектующие (видюха, ссд и т.д.) / Your Specs & FPS"
+      placeholder: "Укажите вашу видеокарту, процессор и тип диска (SSD/HDD)..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: user_agreement_input
+    attributes:
+      label: "⚖️ Пользовательское соглашение / User Agreement"
+      options:
+        - label: "Я пробовал сбросить все настройки клавиш на стандартные (Reset Keybinds) в игре перед отправкой этого отчета / I agree to the terms"
+          required: true
