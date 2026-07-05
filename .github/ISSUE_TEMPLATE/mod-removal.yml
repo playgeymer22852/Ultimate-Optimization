@@ -1,0 +1,17 @@
+name: "Mod removal"
+description: "Suggest a mod to be removed from Ultimate Optimization"
+title: "[Mod Removal]: "
+labels: ["enhancement"]
+body:
+  - type: input
+    id: remove_mod
+    attributes:
+      label: "Mod to remove"
+    validations:
+      required: true
+  - type: textarea
+    id: remove_reason
+    attributes:
+      label: "Why should it be removed?"
+    validations:
+      required: true
