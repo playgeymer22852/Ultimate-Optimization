@@ -17,8 +17,8 @@ body:
   - type: input
     id: mod_link
     attributes:
-      label: "2. Ссылка на мод / Mod Link"
-      placeholder: "https://modrinth.com..."
+      label: "2. Ссылка на сайт мода (Любой сайт) / Mod Link (Any site)"
+      placeholder: "https://..."
     validations:
       required: true
   - type: textarea
@@ -31,7 +31,7 @@ body:
   - type: dropdown
     id: request_os
     attributes:
-      label: "4. Операционная система / Operating System"
+      label: "4. Operational System / Операционная система"
       options:
         - "🪟 Windows 10 / 11"
         - "🐧 Linux"
