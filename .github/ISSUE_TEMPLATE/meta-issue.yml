@@ -1,11 +1,17 @@
-name: "Meta issue"
-description: "Use this issue type only if the creator told you to do that"
+name: "📁 Техническая задача / Meta issue"
+description: "Используйте этот тип задач только по прямой просьбе создателя сборки"
 title: "[Meta]: "
 labels: ["meta"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 📁 Внутренняя техническая задача проекта Ultimate Optimization
   - type: textarea
     id: meta_info
     attributes:
-      label: "Details"
+      label: "Технические подробности задачи / Details"
+      description: "Опишите крупные изменения в сборке, рефакторинг структуры или глобальные тесты производительности."
+      placeholder: "Перевод сборки на новую версию Minecraft 1.21.x и глобальное тестирование стабильности FPS..."
     validations:
       required: true
