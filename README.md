@@ -1,4 +1,4 @@
-# <img src="https://shields.io⚡-cyan?style=for-the-badge" alt="Logo">
+# Ultimate Optimization ![Boost](https://shields.io⚡_FPS_Boost-cyan?style=for-the-badge)
 
 **Ultimate Optimization** — это ультимативная и высокотехнологичная сборка модов для Minecraft, созданная с одной главной целью: выжать абсолютный максимум производительности (FPS), устранить микрофризы и обеспечить идеальную плавность геймплея. 
 
