@@ -15,30 +15,58 @@ body:
       options:
         - label: "Я проверил вкладку Issues и не нашёл дубликата своей ошибки / I checked for duplicates"
           required: true
-        - label: "Я скачал сборку строго с официальной страницы Modrinth (нет вирусов и изменений) / Official Modrinth download"
-          required: true
-        - label: "Я НЕ добавлял в Ultimate Optimization свои собственные моды / No custom mods added"
+        - label: "Я скачал сборку строго с официальной страницы Modrinth (нет вирусов) / Official Modrinth download"
           required: true
         - label: "Я обновил драйверы видеокарты (NVIDIA/AMD/Intel) и процессора (в т.ч. Xeon) / Drivers updated"
           required: true
-        - label: "Мой ПК/Ноутбук не перегревается во время игры (нет троттлинга) / No overheating"
+        - label: "Мой ПК/Ноутбук не перегревается и работает без нестабильного разгона железа (ОЗУ/ЦП) / No overheating or unstable overclock"
           required: true
         - label: "Я использую чистый релиз Minecraft, а не снапшоты, Alpha или Beta / Clean Minecraft release"
           required: true
   - type: dropdown
+    id: os_type
+    attributes:
+      label: "1. Операционная система / Operating System"
+      options:
+        - "🪟 Windows 10 / 11 (Обычный ПК или Ноутбук)"
+        - "🐧 Linux (Ubuntu, Debian, Arch, Mint...)"
+        - "🍏 MacOS (Apple Mac / MacBook)"
+        - "📱 Телефон или Планшет (Запуск через PojavLauncher)"
+    validations:
+      required: true
+  - type: dropdown
+    id: graphics_api
+    attributes:
+      label: "2. Графический интерфейс рендера / Graphics API"
+      options:
+        - "🎮 Стандартный OpenGL (Майнкрафт по умолчанию)"
+        - "⚡ Vulkan API (Если используете сторонние моды вроде VulkanMod)"
+    validations:
+      required: true
+  - type: dropdown
+    id: sync_technology
+    attributes:
+      label: "3. Технология синхронизации кадров / Display Sync Technology"
+      options:
+        - "🔒 Включена вертикальная синхронизация в игре (V-Sync)"
+        - "🖥️ Использую аппаратный G-Sync (NVIDIA) или FreeSync (AMD)"
+        - "🔓 Всё отключено (FPS полностью без ограничений)"
+    validations:
+      required: true
+  - type: dropdown
     id: severity
     attributes:
-      label: "Критичность проблемы / Severity Level"
+      label: "4. Критичность проблемы / Severity Level"
       options:
         - "🔴 Crash / Игра полностью вылетает или не запускается"
-        - "导 FPS Drop / Падает производительность / Микрофризы"
+        - "📉 FPS Drop / Падает производительность / Микрофризы"
         - "🔵 Minor / Небольшой визуальный или текстурный баг"
     validations:
       required: true
   - type: dropdown
     id: lag_type
     attributes:
-      label: "Характер лагов (Если падает FPS) / Type of performance issue"
+      label: "5. Характер лагов (Если падает FPS) / Type of performance issue"
       options:
         - "📉 Постоянно низкий FPS (Constant low FPS)"
         - "🛑 Фризы и заикания каждые пару секунд (Stutters / Spikes)"
@@ -47,9 +75,28 @@ body:
     validations:
       required: true
   - type: dropdown
+    id: gpu_type
+    attributes:
+      label: "6. Тип используемой видеокарты / GPU Type"
+      options:
+        - "🖥️ Дискретная видеокарта (Вставлена в ПК: NVIDIA GeForce / AMD Radeon / Intel Arc)"
+        - "🔌 Встроенная графика (Внутри процессора: Intel HD / AMD Vega / Встройка Xeon)"
+        - "💻 Две видеокарты на ноутбуке (Переключаемая графика дискретная + встройка)"
+    validations:
+      required: true
+  - type: dropdown
+    id: drive_type
+    attributes:
+      label: "7. Тип накопителя, где установлен Minecraft / Storage Drive Type"
+      options:
+        - "⚡ SSD / NVMe (Быстрый современный твердотельный накопитель)"
+        - "💾 HDD (Обычный старый жесткий диск)"
+    validations:
+      required: true
+  - type: dropdown
     id: game_mode
     attributes:
-      label: "Режим игры и тип сессии / Game Mode & Session"
+      label: "8. Режим игры и тип сессии / Game Mode & Session"
       options:
         - "Survival (Выживание) — Одиночная игра"
         - "Creative (Креатив) — Одиночная игра"
@@ -60,56 +107,84 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: "Описание проблемы / Description"
+      label: "9. Описание проблемы / Description"
       placeholder: "Подробно опишите, после каких действий игра вылетела или где именно проявился баг..."
     validations:
       required: true
   - type: input
     id: exact_versions
     attributes:
-      label: "Точные версии ПО / Exact Versions"
-      placeholder: "Модпак: v1.0.0 | Майнкрафт: 1.21 | Java: 25.2.0.3 | Fabric Loader: 0.15.11"
+      label: "10. Точные версии ПО / Exact Versions"
+      placeholder: "Модпак: v1.0.0 | Майнкрафт: 1.21 | Игра запущена на Java: 25.2.0.3 | Fabric Loader: 0.15.11"
     validations:
       required: true
   - type: input
-    id: launcher
+    id: launcher_info
     attributes:
-      label: "Лаунчер / Minecraft Launcher"
-      placeholder: "Modrinth App, Prism Launcher, TL Launcher, Официальный лаунчер..."
+      label: "11. Лаунчер и его точная версия / Minecraft Launcher & Version"
+      placeholder: "Например: Modrinth App v0.15.7, Prism Launcher v8.3, TL Launcher v2.895..."
+    validations:
+      required: true
+  - type: input
+    id: launcher_java
+    attributes:
+      label: "12. Версия Java, на которой работает сам ЛАУНЧЕР / Launcher's Java Version"
+      placeholder: "Например: Встроенная Java 8 в лаунчере, Скачанная отдельно Java 17 / Не знаю..."
     validations:
       required: true
   - type: input
     id: specs
     attributes:
-      label: "Процессор и Видеокарта / PC Specs"
+      label: "13. Процессор и Видеокарта / PC Specs"
       placeholder: "Intel Core i5-12400F / NVIDIA RTX 3060 / Intel Xeon E5-2670"
     validations:
       required: true
   - type: input
-    id: ram
+    id: ram_info
     attributes:
-      label: "Выделенная оперативная память и частота / Allocated RAM"
-      placeholder: "Выделено 4 ГБ (всего на ПК 16 ГБ, частота 3200 МГц)"
+      label: "14. Оперативная память: объем, поколение, частота / RAM Specs"
+      placeholder: "Выделено игре: 4 ГБ | Всего на ПК: 16 ГБ | Поколение: DDR4 | Частота: 3200 МГц"
+    validations:
+      required: true
+  - type: input
+    id: display_info
+    attributes:
+      label: "15. Разрешение экрана и режим окна / Resolution & Display Mode"
+      placeholder: "Например: 1920x1080, Полноэкранный режим (Fullscreen) / 2K Оконный режим..."
+    validations:
+      required: true
+  - type: input
+    id: cable_info
+    attributes:
+      label: "16. Видеокабель и порты подключения к монитору / Cable & Display Ports"
+      placeholder: "Пример: Кабель DP 2.1 вставлен в порт DP 1.4 видеокарты / Шнур HDMI 2.0..."
     validations:
       required: true
   - type: textarea
     id: resourcepacks_shaders
     attributes:
-      label: "Ресурспаки и Шейдеры / Resourcepacks & Shaders"
+      label: "17. Ресурспаки и Шейдеры / Resourcepacks & Shaders"
       placeholder: "Укажите тяжесть и названия. Пример: Шейдеры Средние (Complementary v5), Ресурпак Тяжёлый (Faithful x64)..."
     validations:
       required: true
   - type: textarea
     id: screenshots
     attributes:
-      label: "Скриншоты или Видео (Опционально) / Media Upload"
+      label: "18. Скриншоты или Видео (Опционально) / Media Upload"
       description: "Перетащите сюда файлы изображений, если это визуальный баг или график Alt+F3 / F3."
     validations:
       required: false
   - type: textarea
     id: logs
     attributes:
-      label: "Логи ошибки (latest.log или краш-репорт) / Logs & Crash Report"
+      label: "19. Логи ошибки (latest.log или краш-репорт) / Logs & Crash Report"
       description: "Перетащите файл лога прямо сюда. Без логов мы закроем задачу!"
     validations:
       required: true
+  - type: checkboxes
+    id: user_agreement_bug
+    attributes:
+      label: "⚖️ Пользовательское соглашение / User Agreement"
+      options:
+        - label: "Я согласен, что если я вручную менял моды, обновлял их, не почистил кэш лаунчера или не прикрепил логи — разработчик Ultimate Optimization имеет полное право закрыть и удалить мой отчёт без рассмотрения / I agree to the terms"
+          required: true
