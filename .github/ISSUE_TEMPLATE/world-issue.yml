@@ -1,5 +1,5 @@
 name: "🌍 Проблема с миром или генерацией / World & Generation Bug"
-description: "Если ломаются текстуры блоков, пропадают чанки или игра фризит в конкретных биомах"
+description: "If block textures break, chunks vanish, or the game freezes in specific biomes."
 title: "[World Bug]: "
 labels: ["bug"]
 body:
@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         ### 🌍 Отчет о багах рендера мира и генерации в Ultimate Optimization
-        Для проверки графических багов Sodium/Lithium нам критически важно знать точное местоположение ошибки в мире.
+        Для проверки графических багов Sodium нам критически важно знать точное местоположение ошибки в мире.
   - type: input
     id: world_seed
     attributes:
@@ -18,7 +18,7 @@ body:
   - type: input
     id: world_coords
     attributes:
-      label: "2. Точные координаты балома или блока / Exact Coordinates (X, Y, Z)"
+      label: "2. Точные координаты биома или блока / Exact Coordinates (X, Y, Z)"
       placeholder: "Например: X: 124, Y: 64, Z: -850 (Можно скопировать через F3+C)"
     validations:
       required: true
