@@ -10,21 +10,37 @@ body:
   - type: input
     id: mod_name
     attributes:
-      label: "Название мода / Mod Name"
+      label: "1. Название мода / Mod Name"
       placeholder: "Например: Lithium, Sodium, Bobby, ImmediatelyFast..."
     validations:
       required: true
   - type: input
     id: mod_link
     attributes:
-      label: "Ссылка на мод / Mod Link"
+      label: "2. Ссылка на мод / Mod Link"
       placeholder: "https://modrinth.com..."
     validations:
       required: true
   - type: textarea
     id: reasoning
     attributes:
-      label: "Зачем этот мод нужен в сборке? / Why should it be added?"
+      label: "3. Зачем этот мод нужен в сборке? / Why should it be added?"
       placeholder: "Этот мод оптимизирует работу чанков, уменьшает нагрузку на процессор и поднимает FPS..."
     validations:
       required: true
+  - type: dropdown
+    id: test_drive
+    attributes:
+      label: "4. На каком накопителе вы тестировали этот мод? / Storage Drive used for testing"
+      options:
+        - "⚡ SSD / NVMe (Быстрый современный твердотельный накопитель)"
+        - "💾 HDD (Обычный старый жесткий диск)"
+    validations:
+      required: true
+  - type: checkboxes
+    id: user_agreement_request
+    attributes:
+      label: "⚖️ Пользовательское соглашение / User Agreement"
+      options:
+        - label: "Я подтверждаю, что предлагаю мод строго для оптимизации, повышения FPS или исправления багов Ultimate Optimization, а не тяжелые контентные моды. Я согласен на закрытие темы при нарушении правил / I agree to the terms"
+          required: true
