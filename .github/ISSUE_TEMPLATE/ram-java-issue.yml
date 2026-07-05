@@ -1,0 +1,68 @@
+name: "🧠 Проблема с памятью или Java / RAM & Java Issue"
+description: "Если игра зависает от утечки памяти, лончер выдает Out of Memory или мусорщик Java вызывает фризы"
+title: "[RAM/Java Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 🧠 Отчет о проблемах с оперативной памятью и Java в Ultimate Optimization
+        Ошибки выделения памяти — главная причина микрофризов. Пожалуйста, заполните анкету ниже.
+  - type: input
+    id: allocated_ram
+    attributes:
+      label: "1. Сколько точного объема ОЗУ выделено игре в лаунчере? / Allocated RAM"
+      placeholder: "Например: Выделено 4 ГБ (Всего на ПК установлено 16 ГБ DDR4)"
+    validations:
+      required: true
+  - type: dropdown
+    id: ram_leak
+    attributes:
+      label: "2. Характер проблемы с памятью / Memory Issue Type"
+      options:
+        - "📉 Потребление памяти растет со временем, пока игра не зависнет (Утечка / Memory Leak)"
+        - "💥 Игра мгновенно вылетает с ошибкой Out of Memory при запуске или заходе в мир"
+        - "🛑 Резкие фризы (пики на Alt+F3) происходят регулярно раз в 30-60 секунд (Java Garbage Collector)"
+        - "❓ Другая техническая ошибка памяти"
+    validations:
+      required: true
+  - type: dropdown
+    id: ram_os
+    attributes:
+      label: "3. Операционная система / Operating System"
+      options:
+        - "🪟 Windows 10 / 11"
+        - "🐧 Linux"
+        - "🍏 MacOS"
+        - "📱 PojavLauncher"
+        - "❓ Другая ОС"
+    validations:
+      required: true
+  - type: textarea
+    id: ram_description
+    attributes:
+      label: "4. Подробное описание проблемы / Description"
+      placeholder: "Через полтора часа игры Майнкрафт начинает сильно лагать, в меню F3 использование памяти доходит до 99%..."
+    validations:
+      required: true
+  - type: textarea
+    id: ram_specs
+    attributes:
+      label: "5. Полные характеристики вашего ПК (Процессор, Видеокарта, тип диска) / Your Specs"
+      placeholder: "Intel Xeon E5-2670 | GTX 1060 | Сборка стоит на SSD..."
+    validations:
+      required: true
+  - type: textarea
+    id: ram_arguments
+    attributes:
+      label: "6. Особые аргументы Java в лаунчере (Если меняли) / Custom Java Arguments"
+      placeholder: "Если вы сами прописывали аргументы мусорщика (ZGC, Shenandoah, G1GC), скопируйте их сюда..."
+    validations:
+      required: false
+  - type: checkboxes
+    id: user_agreement_ram
+    attributes:
+      label: "⚖️ Пользовательское соглашение / User Agreement"
+      options:
+        - label: "Я подтверждаю, что выделил Майнкрафту не менее 3-4 ГБ памяти и закрыл тяжелые сторонние программы (браузеры) перед тестом / I agree to the terms"
+          required: true
