@@ -1,6 +1,6 @@
-# ⚡ Ultimate Optimization
+# ⚡ Ultimate fabric optimization
 
-**Ultimate Optimization** — это высокотехнологичная сборка модов для Minecraft, созданная для максимального FPS, устранения фризов и обеспечения идеальной плавности геймплея.
+**Ultimate fabric optimization** — это высокотехнологичная сборка модов для Minecraft, созданная для максимального FPS, устранения фризов и обеспечения идеальной плавности геймплея.
 
 ---
 
